@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2400264689
+    locked: 0
+  - name: Terrain
+    uniqueID: 890051519
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
