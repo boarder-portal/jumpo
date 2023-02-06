@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 787791363}
   - component: {fileID: 787791364}
   m_Layer: 0
-  m_Name: Background (2)
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +282,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1853402889}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &787791364
 SpriteRenderer:
@@ -465,6 +465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1853402889}
+  - component: {fileID: 1853402890}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -484,12 +485,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 787791363}
   - {fileID: 2039744063}
   - {fileID: 1912152001}
-  - {fileID: 787791363}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1853402890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853402888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a428e4fb9c8426b48b3cbbbd37671449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftmostImage: {fileID: 787791364}
+  rightmostImage: {fileID: 1912152002}
+  camera: {fileID: 519420031}
 --- !u!1 &1912152000
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +517,7 @@ GameObject:
   - component: {fileID: 1912152001}
   - component: {fileID: 1912152002}
   m_Layer: 0
-  m_Name: Background (1)
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,7 +536,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1853402889}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1912152002
 SpriteRenderer:
@@ -585,7 +601,7 @@ GameObject:
   - component: {fileID: 2039744063}
   - component: {fileID: 2039744064}
   m_Layer: 0
-  m_Name: Background
+  m_Name: Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,7 +620,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1853402889}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2039744064
 SpriteRenderer:
