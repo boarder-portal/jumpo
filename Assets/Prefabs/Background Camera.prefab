@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6527400916292400446}
   - component: {fileID: 7108104994575938719}
   - component: {fileID: 9143460577900400916}
-  - component: {fileID: -3437777305310683420}
+  - component: {fileID: 3489506776837188783}
   m_Layer: 0
   m_Name: Background Camera
   m_TagString: Untagged
@@ -85,7 +85,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4900930781544112981}
   m_Enabled: 0
---- !u!114 &-3437777305310683420
+--- !u!114 &3489506776837188783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
