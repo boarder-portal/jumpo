@@ -6,15 +6,17 @@ namespace Background {
         [SerializeField] private SpriteRenderer rightmostImage;
         [SerializeField] private new Camera camera;
 
+        private const float ChangeThreshold = 0.1f;
+
         private float _imageLength;
         private float _cameraWidth;
 
-        void Start() {
+        private void Start() {
             _imageLength = leftmostImage.bounds.size.x;
             _cameraWidth = 2 * camera.orthographicSize * camera.aspect;
         }
 
-        void Update() {
+        private void Update() {
             float cameraPositionX = camera.transform.position.x;
 
             float leftBackgroundX = leftmostImage.transform.position.x - _imageLength / 2;
@@ -25,9 +27,9 @@ namespace Background {
 
             float positionChange = 0;
 
-            if (leftCameraX - leftBackgroundX < 1) {
+            if (leftCameraX - leftBackgroundX < _imageLength * ChangeThreshold) {
                 positionChange = -_imageLength;
-            } else if (rightBackgroundX - rightCameraX < 1) {
+            } else if (rightBackgroundX - rightCameraX < _imageLength * ChangeThreshold) {
                 positionChange = _imageLength;
             }
 
