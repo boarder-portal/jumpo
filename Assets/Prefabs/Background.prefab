@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225903877277680436}
   - component: {fileID: 225903877277680439}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225903877418392266}
   - component: {fileID: 225903877418392245}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,8 +177,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 225903877588038652}
-  - component: {fileID: 225903877588038655}
-  m_Layer: 0
+  - component: {fileID: 1080239527046713168}
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &225903877588038655
+--- !u!114 &1080239527046713168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,7 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftmostImage: {fileID: 225903878670426865}
   rightmostImage: {fileID: 225903877277680439}
-  camera: {fileID: 2865171084632722024, guid: 35beaf41e3d96fa458e4617b4b5dad55, type: 3}
+  camera: {fileID: 7108104994575938719, guid: 2a5388a6f9a958d4eb29be488230324e, type: 3}
+  changeThreshold: 0.1
 --- !u!1 &225903878670426871
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225903878670426870}
   - component: {fileID: 225903878670426865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4,9 +4,8 @@ namespace Background {
   public class BackgroundManager : MonoBehaviour {
     [SerializeField] private SpriteRenderer leftmostImage;
     [SerializeField] private SpriteRenderer rightmostImage;
-    [SerializeField] private new Camera camera;
-
-    private const float ChangeThreshold = 0.1f;
+    [SerializeField] private new UnityEngine.Camera camera;
+    [SerializeField] private float changeThreshold = 0.1f;
 
     private float _imageLength;
     private float _cameraWidth;
@@ -17,26 +16,26 @@ namespace Background {
     }
 
     private void Update() {
-      var cameraPositionX = camera.transform.position.x;
+      var cameraPosition = camera.transform.position;
 
       var leftBackgroundX = leftmostImage.transform.position.x - _imageLength / 2;
-      var leftCameraX = cameraPositionX - _cameraWidth / 2;
+      var leftCameraX = cameraPosition.x - _cameraWidth / 2;
 
       var rightBackgroundX = rightmostImage.transform.position.x + _imageLength / 2;
-      var rightCameraX = cameraPositionX + _cameraWidth / 2;
+      var rightCameraX = cameraPosition.x + _cameraWidth / 2;
 
-      float positionChange = 0;
+      float positionChangeX = 0;
 
-      if (leftCameraX - leftBackgroundX < _imageLength * ChangeThreshold) {
-        positionChange = -_imageLength;
-      } else if (rightBackgroundX - rightCameraX < _imageLength * ChangeThreshold) {
-        positionChange = _imageLength;
+      if (leftCameraX - leftBackgroundX < _imageLength * changeThreshold) {
+        positionChangeX = -_imageLength;
+      } else if (rightBackgroundX - rightCameraX < _imageLength * changeThreshold) {
+        positionChangeX = _imageLength;
       }
 
-      if (positionChange != 0) {
+      if (positionChangeX != 0) {
         var position = transform.position;
 
-        transform.position = new Vector3(position.x + positionChange, position.y, position.z);
+        transform.position = new Vector3(position.x + positionChangeX, position.y, position.z);
       }
     }
   }
