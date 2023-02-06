@@ -17,13 +17,13 @@ namespace Background {
     }
 
     private void Update() {
-      float cameraPositionX = camera.transform.position.x;
+      var cameraPositionX = camera.transform.position.x;
 
-      float leftBackgroundX = leftmostImage.transform.position.x - _imageLength / 2;
-      float leftCameraX = cameraPositionX - _cameraWidth / 2;
+      var leftBackgroundX = leftmostImage.transform.position.x - _imageLength / 2;
+      var leftCameraX = cameraPositionX - _cameraWidth / 2;
 
-      float rightBackgroundX = rightmostImage.transform.position.x + _imageLength / 2;
-      float rightCameraX = cameraPositionX + _cameraWidth / 2;
+      var rightBackgroundX = rightmostImage.transform.position.x + _imageLength / 2;
+      var rightCameraX = cameraPositionX + _cameraWidth / 2;
 
       float positionChange = 0;
 
@@ -34,7 +34,7 @@ namespace Background {
       }
 
       if (positionChange != 0) {
-        Vector3 position = transform.position;
+        var position = transform.position;
 
         transform.position = new Vector3(position.x + positionChange, position.y, position.z);
       }
