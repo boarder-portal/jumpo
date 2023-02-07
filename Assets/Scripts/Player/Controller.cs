@@ -1,20 +1,18 @@
 using UnityEngine;
 
 namespace Player {
-  using AnimationState = Player.PlayerAnimationController.AnimationState;
-
-  public class PlayerController : MonoBehaviour {
+  public class Controller : MonoBehaviour {
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float sideForce = 7f;
     [SerializeField] private float jumpFallThreshold = 0.001f;
 
     private Rigidbody2D _rigidbody;
-    private PlayerAnimationController _animationController;
+    private AnimationController _animationController;
     private SpriteRenderer _sprite;
 
     private void Start() {
       _rigidbody = GetComponent<Rigidbody2D>();
-      _animationController = GetComponent<PlayerAnimationController>();
+      _animationController = GetComponent<AnimationController>();
       _sprite = GetComponent<SpriteRenderer>();
     }
 

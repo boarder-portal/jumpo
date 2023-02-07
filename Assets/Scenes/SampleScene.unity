@@ -961,6 +961,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7108104994575938719, guid: 2a5388a6f9a958d4eb29be488230324e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a5388a6f9a958d4eb29be488230324e, type: 3}
 --- !u!1001 &2865171084606747159
@@ -970,6 +974,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2865171084632722024, guid: 35beaf41e3d96fa458e4617b4b5dad55, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2865171084632722027, guid: 35beaf41e3d96fa458e4617b4b5dad55, type: 3}
       propertyPath: m_Name
       value: Main Camera

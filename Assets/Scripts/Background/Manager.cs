@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Background {
-  public class BackgroundManager : MonoBehaviour {
+  public class Manager : MonoBehaviour {
     [SerializeField] private SpriteRenderer leftmostImage;
     [SerializeField] private SpriteRenderer rightmostImage;
     [SerializeField] private new UnityEngine.Camera camera;

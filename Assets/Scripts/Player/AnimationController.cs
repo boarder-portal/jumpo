@@ -1,17 +1,17 @@
 using UnityEngine;
 
 namespace Player {
-  public class PlayerAnimationController : MonoBehaviour {
+  public enum AnimationState {
+    Idle,
+    Run,
+    Jump,
+    Fall,
+  }
+
+  public class AnimationController : MonoBehaviour {
     private static readonly int PlayerAnimationState = Animator.StringToHash("playerAnimationState");
 
     private Animator _animator;
-
-    public enum AnimationState {
-      Idle,
-      Run,
-      Jump,
-      Fall,
-    }
 
     private void Start() {
       _animator = GetComponent<Animator>();
