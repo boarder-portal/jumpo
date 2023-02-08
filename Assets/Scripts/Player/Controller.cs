@@ -1,7 +1,19 @@
+using System;
 using UnityEngine;
 
 namespace Player {
   public class Controller : MonoBehaviour {
+    private static readonly KeyCode[] LeftKeys = { KeyCode.LeftArrow, KeyCode.A };
+    private static readonly KeyCode[] RightKeys = { KeyCode.RightArrow, KeyCode.D };
+
+    private static bool IsLeftPressed() {
+      return Array.Exists(LeftKeys, Input.GetKey);
+    }
+
+    private static bool IsRightPressed() {
+      return Array.Exists(RightKeys, Input.GetKey);
+    }
+
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float sideForce = 7f;
     [SerializeField] private float jumpFallThreshold = 0.001f;
@@ -18,16 +30,14 @@ namespace Player {
 
     private void Update() {
       var currentVelocity = _rigidbody.velocity;
-      var newVelocityX = currentVelocity.x;
+      var newVelocityX = 0f;
       var newVelocityY = currentVelocity.y;
       var newAnimationState = AnimationState.Idle;
 
-      var isLeft = Input.GetKey("a");
-      var isRight = Input.GetKey("d");
+      var isLeft = IsLeftPressed();
+      var isRight = IsRightPressed();
 
       if (isLeft || isRight) {
-        newAnimationState = AnimationState.Run;
-
         if (isLeft && !isRight) {
           newVelocityX = -sideForce;
           _sprite.flipX = true;
@@ -41,6 +51,10 @@ namespace Player {
 
       if (Input.GetKeyDown("space")) {
         newVelocityY = jumpForce;
+      }
+
+      if (newVelocityX != 0) {
+        newAnimationState = AnimationState.Run;
       }
 
       if (newVelocityY > jumpFallThreshold) {
