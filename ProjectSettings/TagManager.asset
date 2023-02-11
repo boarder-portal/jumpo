@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Apple
   layers:
   - Default
   - TransparentFX
@@ -46,6 +47,9 @@ TagManager:
     locked: 0
   - name: Terrain
     uniqueID: 890051519
+    locked: 0
+  - name: Apples
+    uniqueID: 3148161569
     locked: 0
   - name: Default
     uniqueID: 0
