@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 1301764789}
   - component: {fileID: 1301764788}
   - component: {fileID: 1301764791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -977,6 +977,10 @@ PrefabInstance:
     - target: {fileID: 2865171084632722024, guid: 35beaf41e3d96fa458e4617b4b5dad55, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865171084632722024, guid: 35beaf41e3d96fa458e4617b4b5dad55, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 183
       objectReference: {fileID: 0}
     - target: {fileID: 2865171084632722027, guid: 35beaf41e3d96fa458e4617b4b5dad55, type: 3}
       propertyPath: m_Name

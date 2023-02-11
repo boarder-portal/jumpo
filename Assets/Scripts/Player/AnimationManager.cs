@@ -8,7 +8,7 @@ namespace Player {
     Fall,
   }
 
-  public class AnimationController : MonoBehaviour {
+  public class AnimationManager : MonoBehaviour {
     private static readonly int PlayerAnimationState = Animator.StringToHash("playerAnimationState");
 
     private Animator _animator;
