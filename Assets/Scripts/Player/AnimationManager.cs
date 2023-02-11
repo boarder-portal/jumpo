@@ -6,6 +6,7 @@ namespace Player {
     Run,
     Jump,
     Fall,
+    Dead,
   }
 
   public class AnimationManager : MonoBehaviour {

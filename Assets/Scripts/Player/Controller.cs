@@ -23,19 +23,47 @@ namespace Player {
     private AnimationManager _animationManager;
     private SpriteRenderer _sprite;
     private Collider2D _collider;
+    private Lifecycle _lifecycle;
 
     private void Start() {
       _rigidbody = GetComponent<Rigidbody2D>();
       _animationManager = GetComponent<AnimationManager>();
       _sprite = GetComponent<SpriteRenderer>();
       _collider = GetComponent<Collider2D>();
+      _lifecycle = GetComponent<Lifecycle>();
     }
 
     private void Update() {
+      var newVelocity = GetNewVelocity();
+      var newAnimationState = AnimationState.Idle;
+
+      if (_lifecycle.IsAlive) {
+        if (newVelocity.x != 0) {
+          newAnimationState = AnimationState.Run;
+        }
+
+        if (newVelocity.y > jumpFallThreshold) {
+          newAnimationState = AnimationState.Jump;
+        } else if (newVelocity.y < -jumpFallThreshold) {
+          newAnimationState = AnimationState.Fall;
+        }
+      } else {
+        newAnimationState = AnimationState.Dead;
+      }
+
+      _rigidbody.velocity = newVelocity;
+
+      _animationManager.SetState(newAnimationState);
+    }
+
+    private Vector2 GetNewVelocity() {
+      if (!_lifecycle.IsAlive) {
+        return new Vector2(0, 0);
+      }
+
       var currentVelocity = _rigidbody.velocity;
       var newVelocityX = 0f;
       var newVelocityY = currentVelocity.y;
-      var newAnimationState = AnimationState.Idle;
 
       var isLeft = IsLeftPressed();
       var isRight = IsRightPressed();
@@ -56,19 +84,7 @@ namespace Player {
         newVelocityY = jumpForce;
       }
 
-      if (newVelocityX != 0) {
-        newAnimationState = AnimationState.Run;
-      }
-
-      if (newVelocityY > jumpFallThreshold) {
-        newAnimationState = AnimationState.Jump;
-      } else if (newVelocityY < -jumpFallThreshold) {
-        newAnimationState = AnimationState.Fall;
-      }
-
-      _rigidbody.velocity = new Vector2(newVelocityX, newVelocityY);
-
-      _animationManager.SetState(newAnimationState);
+      return new Vector2(newVelocityX, newVelocityY);
     }
 
     private bool IsGrounded() {
