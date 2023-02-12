@@ -14,7 +14,7 @@ namespace Player {
       return Array.Exists(RightKeys, Input.GetKey);
     }
 
-    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float sideForce = 7f;
     [SerializeField] private float jumpFallThreshold = 0.001f;
@@ -24,6 +24,7 @@ namespace Player {
     private SpriteRenderer _sprite;
     private Collider2D _collider;
     private Lifecycle _lifecycle;
+    private Transform _playerParent;
 
     private void Start() {
       _rigidbody = GetComponent<Rigidbody2D>();
@@ -31,6 +32,7 @@ namespace Player {
       _sprite = GetComponent<SpriteRenderer>();
       _collider = GetComponent<Collider2D>();
       _lifecycle = GetComponent<Lifecycle>();
+      _playerParent = transform.parent;
     }
 
     private void Update() {
@@ -96,8 +98,16 @@ namespace Player {
         angle: 0f,
         direction: Vector2.down,
         distance: 0.3f,
-        layerMask: groundLayer
+        layerMask: jumpableGround
       );
+    }
+
+    public void StickTo(Transform t) {
+      transform.SetParent(t);
+    }
+
+    public void Unstick() {
+      transform.SetParent(_playerParent);
     }
   }
 }
