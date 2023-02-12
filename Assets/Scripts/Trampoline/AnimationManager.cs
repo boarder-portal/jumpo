@@ -1,12 +1,9 @@
 using Shared.Utilities;
 
-namespace Player {
+namespace Trampoline {
   public enum AnimationState {
     Idle,
-    Run,
-    Jump,
-    Fall,
-    Dead,
+    Active,
   }
 
   public class AnimationManager : AnimationManager<AnimationState> {

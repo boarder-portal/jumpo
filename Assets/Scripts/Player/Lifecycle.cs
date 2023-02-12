@@ -7,10 +7,18 @@ namespace Player {
 
     private void OnTriggerEnter2D(Collider2D collision) {
       if (IsAlive && collision.gameObject.CompareTag("Spikes")) {
-        IsAlive = false;
-
-        Invoke(nameof(RestartLevel), 1.5f);
+        Die();
       }
+    }
+
+    public void Die() {
+      if (!IsAlive) {
+        return;
+      }
+
+      IsAlive = false;
+
+      Invoke(nameof(RestartLevel), 1.5f);
     }
 
     private void RestartLevel() {

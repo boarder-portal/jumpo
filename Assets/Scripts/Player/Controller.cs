@@ -18,6 +18,7 @@ namespace Player {
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float sideForce = 7f;
     [SerializeField] private float jumpFallThreshold = 0.001f;
+    [SerializeField] private float lowBound = -5f;
 
     private Rigidbody2D _rigidbody;
     private AnimationManager _animationManager;
@@ -36,10 +37,17 @@ namespace Player {
     }
 
     private void Update() {
-      var newVelocity = GetNewVelocity();
+      if (_lifecycle.IsAlive && transform.position.y < lowBound) {
+        _lifecycle.Die();
+      }
+
       var newAnimationState = AnimationState.Idle;
 
       if (_lifecycle.IsAlive) {
+        var newVelocity = GetNewVelocity();
+
+        _rigidbody.velocity = newVelocity;
+
         if (newVelocity.x != 0) {
           newAnimationState = AnimationState.Run;
         }
@@ -50,10 +58,10 @@ namespace Player {
           newAnimationState = AnimationState.Fall;
         }
       } else {
+        _rigidbody.bodyType = RigidbodyType2D.Static;
+
         newAnimationState = AnimationState.Dead;
       }
-
-      _rigidbody.velocity = newVelocity;
 
       _animationManager.SetState(newAnimationState);
     }
@@ -102,12 +110,18 @@ namespace Player {
       );
     }
 
+    public void ExternalJump(float externalJumpForce) {
+      _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, externalJumpForce);
+    }
+
     public void StickTo(Transform t) {
       transform.SetParent(t);
     }
 
-    public void Unstick() {
-      transform.SetParent(_playerParent);
+    public void Unstick(Transform t) {
+      if (transform.parent == t) {
+        transform.SetParent(_playerParent);
+      }
     }
   }
 }
