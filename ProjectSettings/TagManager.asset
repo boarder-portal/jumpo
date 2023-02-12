@@ -43,14 +43,17 @@ TagManager:
   - name: Background
     uniqueID: 2400264689
     locked: 0
+  - name: Objects
+    uniqueID: 3148161569
+    locked: 0
   - name: Player
     uniqueID: 3994163845
     locked: 0
+  - name: Platform
+    uniqueID: 2074080297
+    locked: 0
   - name: Terrain
     uniqueID: 890051519
-    locked: 0
-  - name: Objects
-    uniqueID: 3148161569
     locked: 0
   - name: Default
     uniqueID: 0
