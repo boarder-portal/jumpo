@@ -1,4 +1,4 @@
-using Shared.Utilities;
+using Shared.Components;
 
 namespace Trampoline {
   public enum AnimationState {

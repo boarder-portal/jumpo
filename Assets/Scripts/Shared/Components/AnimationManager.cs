@@ -1,22 +1,24 @@
 using System;
 using UnityEngine;
 
-namespace Shared.Utilities {
-  public abstract class AnimationManager<AnimationState> : MonoBehaviour where AnimationState : IConvertible {
+namespace Shared.Components {
+  public abstract class AnimationManager<TAnimation> : MonoBehaviour where TAnimation : IConvertible {
     private static readonly int AnimationStateHash = Animator.StringToHash("animationState");
 
     private Animator _animator;
     private int _stateValue;
 
-    protected abstract AnimationState DefaultState { get; }
+    protected abstract TAnimation DefaultState { get; }
 
     private void Start() {
       _animator = GetComponent<Animator>();
       _stateValue = (int)(object)DefaultState;
     }
 
-    public void SetState(AnimationState state) {
-      if (!typeof(AnimationState).IsEnum) {
+    public void SetState(TAnimation state) {
+      if (!typeof(TAnimation).IsEnum) {
+        Debug.LogWarning("Passed wrong argument to SetState()");
+
         return;
       }
 

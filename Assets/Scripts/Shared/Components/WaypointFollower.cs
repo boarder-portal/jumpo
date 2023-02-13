@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Shared {
+namespace Shared.Components {
   public class WaypointFollower : MonoBehaviour {
     [SerializeField] private GameObject waypointsContainer;
     [SerializeField] private int startWaypointIndex;

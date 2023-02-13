@@ -8,9 +8,11 @@ namespace Trampoline {
     [SerializeField] private float jumpForce = 25f;
 
     private AnimationManager _animationManager;
+    private AudioManager _audioManager;
 
     private void Start() {
       _animationManager = GetComponent<AnimationManager>();
+      _audioManager = GetComponent<AudioManager>();
     }
 
     public void Activate() {
@@ -19,6 +21,8 @@ namespace Trampoline {
     }
 
     public void ActivateJump() {
+      _audioManager.Play(Audio.Activate);
+
       playerController.Unstick(platform.transform);
       playerController.ExternalJump(jumpForce);
     }

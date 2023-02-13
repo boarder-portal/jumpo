@@ -25,6 +25,7 @@ namespace Player {
     private SpriteRenderer _sprite;
     private Collider2D _collider;
     private Lifecycle _lifecycle;
+    private AudioManager _audioManager;
     private Transform _playerParent;
 
     private void Start() {
@@ -33,6 +34,7 @@ namespace Player {
       _sprite = GetComponent<SpriteRenderer>();
       _collider = GetComponent<Collider2D>();
       _lifecycle = GetComponent<Lifecycle>();
+      _audioManager = GetComponent<AudioManager>();
       _playerParent = transform.parent;
     }
 
@@ -85,6 +87,8 @@ namespace Player {
 
       if (Input.GetKeyDown("space") && IsGrounded()) {
         newVelocityY = jumpForce;
+
+        _audioManager.Play(Audio.Jump);
       }
 
       return new Vector2(newVelocityX, newVelocityY);
