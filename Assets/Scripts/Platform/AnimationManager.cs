@@ -14,9 +14,15 @@ namespace Platform {
     }
 
     private void Update() {
-      _animator.SetFloat(AnimationMultiplier, Math.Sign(transform.position.x - _prevPosition.x));
+      var currentPosition = transform.position;
+      var direction = (
+        Math.Sign(currentPosition.x - _prevPosition.x)
+        | Math.Sign(currentPosition.y - _prevPosition.y)
+      );
 
-      _prevPosition = transform.position;
+      _animator.SetFloat(AnimationMultiplier, direction);
+
+      _prevPosition = currentPosition;
     }
   }
 }

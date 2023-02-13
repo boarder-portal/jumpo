@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 namespace Player {
   public class Lifecycle : MonoBehaviour {
+    private static string GetCurrentScene() {
+      return SceneManager.GetActiveScene().name;
+    }
+
     private Rigidbody2D _rigidbody;
     private AnimationManager _animationManager;
     private AudioManager _audioManager;
@@ -48,10 +52,26 @@ namespace Player {
 
       _audioManager.Play(Audio.Finish);
       _animationManager.SetState(AnimationState.Idle);
+
+      Invoke(nameof(StartNextLevel), 2f);
+    }
+
+    // FIXME: temporary solution, add scene manager
+    private void StartNextLevel() {
+      var currentScene = GetCurrentScene();
+      var nextScene = "";
+
+      if (currentScene == "Level 1") {
+        nextScene = "Level 2";
+      }
+
+      if (nextScene != "") {
+        SceneManager.LoadScene(nextScene);
+      }
     }
 
     public void RestartLevel() {
-      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+      SceneManager.LoadScene(GetCurrentScene());
     }
   }
 }
