@@ -3,25 +3,42 @@ using UnityEngine.SceneManagement;
 
 namespace Player {
   public class Lifecycle : MonoBehaviour {
-    public bool IsAlive { get; private set; } = true;
+    private Rigidbody2D _rigidbody;
+    private AnimationManager _animationManager;
+
+    private bool _isAlive = true;
+
+    public bool IsControllable { get; private set; } = true;
+
+    private void Start() {
+      _rigidbody = GetComponent<Rigidbody2D>();
+      _animationManager = GetComponent<AnimationManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-      if (IsAlive && collision.gameObject.CompareTag("Spikes")) {
+      if (_isAlive && collision.gameObject.CompareTag("Spikes")) {
         Die();
       }
     }
 
     public void Die() {
-      if (!IsAlive) {
+      if (!_isAlive) {
         return;
       }
 
-      IsAlive = false;
+      _isAlive = false;
+      IsControllable = false;
 
-      Invoke(nameof(RestartLevel), 1.5f);
+      _rigidbody.bodyType = RigidbodyType2D.Static;
+
+      _animationManager.SetState(AnimationState.Dead);
     }
 
-    private void RestartLevel() {
+    public void EndLevel() {
+      IsControllable = false;
+    }
+
+    public void RestartLevel() {
       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
   }

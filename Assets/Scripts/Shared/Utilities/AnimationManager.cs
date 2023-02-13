@@ -5,14 +5,14 @@ namespace Shared.Utilities {
   public abstract class AnimationManager<AnimationState> : MonoBehaviour where AnimationState : IConvertible {
     private static readonly int AnimationStateHash = Animator.StringToHash("animationState");
 
-    protected abstract AnimationState DefaultState { get; }
-
     private Animator _animator;
-    private int _state;
+    private int _stateValue;
+
+    protected abstract AnimationState DefaultState { get; }
 
     private void Start() {
       _animator = GetComponent<Animator>();
-      _state = (int)(object)DefaultState;
+      _stateValue = (int)(object)DefaultState;
     }
 
     public void SetState(AnimationState state) {
@@ -20,15 +20,15 @@ namespace Shared.Utilities {
         return;
       }
 
-      var stateValue = (int)(object)state;
+      var newStateValue = (int)(object)state;
 
-      if (stateValue == _state) {
+      if (newStateValue == _stateValue) {
         return;
       }
 
-      _state = stateValue;
+      _stateValue = newStateValue;
 
-      _animator.SetInteger(AnimationStateHash, _state);
+      _animator.SetInteger(AnimationStateHash, _stateValue);
     }
   }
 }

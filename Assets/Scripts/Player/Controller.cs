@@ -37,40 +37,33 @@ namespace Player {
     }
 
     private void Update() {
-      if (_lifecycle.IsAlive && transform.position.y < lowBound) {
+      if (transform.position.y < lowBound) {
         _lifecycle.Die();
       }
 
+      if (!_lifecycle.IsControllable) {
+        return;
+      }
+
       var newAnimationState = AnimationState.Idle;
+      var newVelocity = GetNewVelocity();
 
-      if (_lifecycle.IsAlive) {
-        var newVelocity = GetNewVelocity();
+      _rigidbody.velocity = newVelocity;
 
-        _rigidbody.velocity = newVelocity;
+      if (newVelocity.x != 0) {
+        newAnimationState = AnimationState.Run;
+      }
 
-        if (newVelocity.x != 0) {
-          newAnimationState = AnimationState.Run;
-        }
-
-        if (newVelocity.y > jumpFallThreshold) {
-          newAnimationState = AnimationState.Jump;
-        } else if (newVelocity.y < -jumpFallThreshold) {
-          newAnimationState = AnimationState.Fall;
-        }
-      } else {
-        _rigidbody.bodyType = RigidbodyType2D.Static;
-
-        newAnimationState = AnimationState.Dead;
+      if (newVelocity.y > jumpFallThreshold) {
+        newAnimationState = AnimationState.Jump;
+      } else if (newVelocity.y < -jumpFallThreshold) {
+        newAnimationState = AnimationState.Fall;
       }
 
       _animationManager.SetState(newAnimationState);
     }
 
     private Vector2 GetNewVelocity() {
-      if (!_lifecycle.IsAlive) {
-        return new Vector2(0, 0);
-      }
-
       var currentVelocity = _rigidbody.velocity;
       var newVelocityX = 0f;
       var newVelocityY = currentVelocity.y;
