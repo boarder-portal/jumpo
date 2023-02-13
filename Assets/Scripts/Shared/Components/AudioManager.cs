@@ -18,7 +18,7 @@ namespace Shared.Components {
         return;
       }
 
-      _audioSources[(int)(object)sourceType]?.Play();
+      _audioSources[(int)(object)sourceType].Play();
     }
   }
 }

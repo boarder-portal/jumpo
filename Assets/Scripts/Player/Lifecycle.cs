@@ -8,6 +8,7 @@ namespace Player {
     private AudioManager _audioManager;
 
     private bool _isAlive = true;
+    private bool _levelCompleted;
 
     public bool IsControllable { get; private set; } = true;
 
@@ -38,6 +39,11 @@ namespace Player {
     }
 
     public void EndLevel() {
+      if (_levelCompleted) {
+        return;
+      }
+
+      _levelCompleted = true;
       IsControllable = false;
 
       _audioManager.Play(Audio.Finish);

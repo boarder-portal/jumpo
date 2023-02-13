@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Shared.Components {
   public abstract class AnimationManager<TAnimation> : MonoBehaviour where TAnimation : IConvertible {
-    private static readonly int AnimationStateHash = Animator.StringToHash("animationState");
+    [SerializeField] private AnimationClip[] animations;
 
     private Animator _animator;
     private int _stateValue;
@@ -30,7 +30,7 @@ namespace Shared.Components {
 
       _stateValue = newStateValue;
 
-      _animator.SetInteger(AnimationStateHash, _stateValue);
+      _animator.Play(animations[_stateValue].name);
     }
   }
 }

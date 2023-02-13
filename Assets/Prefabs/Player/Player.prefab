@@ -191,6 +191,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8f63f37d32672418862e2a52760e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animations:
+  - {fileID: 7400000, guid: 4e38eab5650fe174fb0b129df566d662, type: 2}
+  - {fileID: 7400000, guid: 9d83322bd10387d43a5c1a28080a3134, type: 2}
+  - {fileID: 7400000, guid: eca5a377483b67f4c9631b7723e4ec91, type: 2}
+  - {fileID: 7400000, guid: 156b175d1c7d0b246a10dbe450aa5a4f, type: 2}
+  - {fileID: 7400000, guid: 7450f177baf253b468430e02f07bd5c4, type: 2}
 --- !u!114 &-8116933041553099760
 MonoBehaviour:
   m_ObjectHideFlags: 0
