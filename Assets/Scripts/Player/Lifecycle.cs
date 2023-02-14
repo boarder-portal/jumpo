@@ -65,9 +65,11 @@ namespace Player {
         nextScene = "Level 2";
       }
 
-      if (nextScene != "") {
-        SceneManager.LoadScene(nextScene);
+      if (nextScene == "") {
+        nextScene = "Main Menu";
       }
+
+      SceneManager.LoadScene(nextScene);
     }
 
     public void RestartLevel() {

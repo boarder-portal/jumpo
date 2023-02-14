@@ -6,13 +6,17 @@ namespace Shared.Components {
     [SerializeField] private AnimationClip[] animations;
 
     private Animator _animator;
-    private int _stateValue;
+    private TAnimation _stateValue;
 
     protected abstract TAnimation DefaultState { get; }
 
     private void Start() {
       _animator = GetComponent<Animator>();
-      _stateValue = (int)(object)DefaultState;
+      _stateValue = DefaultState;
+    }
+
+    public TAnimation GetCurrentState() {
+      return _stateValue;
     }
 
     public void SetState(TAnimation state) {
@@ -24,13 +28,13 @@ namespace Shared.Components {
 
       var newStateValue = (int)(object)state;
 
-      if (newStateValue == _stateValue) {
+      if (newStateValue == (int)(object)_stateValue) {
         return;
       }
 
-      _stateValue = newStateValue;
+      _stateValue = state;
 
-      _animator.Play(animations[_stateValue].name);
+      _animator.Play(animations[newStateValue].name);
     }
   }
 }
