@@ -1,10 +1,10 @@
+using Core;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace UI {
   public class MainMenuManager : MonoBehaviour {
     public void StartGame() {
-      SceneManager.LoadScene("Level 1");
+      CoreAPI.SceneManager.GoToLevel(1);
     }
 
     public void QuitGame() {

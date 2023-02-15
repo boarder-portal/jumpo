@@ -1,12 +1,8 @@
+using Core;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Player {
   public class Lifecycle : MonoBehaviour {
-    private static string GetCurrentScene() {
-      return SceneManager.GetActiveScene().name;
-    }
-
     private Rigidbody2D _rigidbody;
     private AnimationManager _animationManager;
     private AudioManager _audioManager;
@@ -56,24 +52,12 @@ namespace Player {
       Invoke(nameof(StartNextLevel), 2f);
     }
 
-    // FIXME: temporary solution, add scene manager
     private void StartNextLevel() {
-      var currentScene = GetCurrentScene();
-      var nextScene = "";
-
-      if (currentScene == "Level 1") {
-        nextScene = "Level 2";
-      }
-
-      if (nextScene == "") {
-        nextScene = "Main Menu";
-      }
-
-      SceneManager.LoadScene(nextScene);
+      CoreAPI.SceneManager.GoToNextLevel();
     }
 
     public void RestartLevel() {
-      SceneManager.LoadScene(GetCurrentScene());
+      CoreAPI.SceneManager.RestartLevel();
     }
   }
 }
