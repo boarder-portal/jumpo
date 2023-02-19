@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -22,28 +21,6 @@ namespace Core {
     };
 
     private static readonly Regex LevelRegex = new(@"^Level (\d+)$");
-
-    private static IEnumerator UnloadAllScenesAsync(params string[] excludingScenes) {
-      var operations = (
-        from scene in Shared.Utilities.Scene.GetAllScenes()
-        where
-          scene.isLoaded
-          && scene.name != GetSceneName(Scene.Core)
-          && !excludingScenes.Contains(scene.name)
-        select UnitySceneManager.UnloadSceneAsync(scene.name)
-      ).ToList();
-
-      while (operations.Any(operation => !operation.isDone)) {
-        yield return null;
-      }
-    }
-
-    private static IEnumerator LoadSceneAsync(string scene) {
-      // TODO: figure out how to restart a scene without unloading it
-      yield return UnloadAllScenesAsync();
-
-      UnitySceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
-    }
 
     public static string GetSceneName(Scene scene) {
       return SceneString[scene];
@@ -85,7 +62,7 @@ namespace Core {
     }
 
     public void LoadScene(string scene) {
-      StartCoroutine(LoadSceneAsync(scene));
+      UnitySceneManager.LoadSceneAsync(scene);
     }
 
     public void LoadScene(Scene scene) {

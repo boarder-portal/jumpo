@@ -322,35 +322,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f69c5ae05e2207b4cb7823986b18f560, type: 3}
---- !u!1001 &1109157047
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1524356616244165186, guid: ca693b49d87049c4b93907ac2f5e68ca, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1524356616244165186, guid: ca693b49d87049c4b93907ac2f5e68ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1524356616244165186, guid: ca693b49d87049c4b93907ac2f5e68ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1524356616244165186, guid: ca693b49d87049c4b93907ac2f5e68ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1524356616244165187, guid: ca693b49d87049c4b93907ac2f5e68ca, type: 3}
-      propertyPath: m_Name
-      value: Core Loader
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ca693b49d87049c4b93907ac2f5e68ca, type: 3}
 --- !u!1 &1221080471
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +398,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221080471}
   m_CullTransparentMesh: 1
+--- !u!1001 &1237827471
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 151709311351362173, guid: 71e94d34a9b186e4e86630a1f051c7cc, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151709311351362173, guid: 71e94d34a9b186e4e86630a1f051c7cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151709311351362173, guid: 71e94d34a9b186e4e86630a1f051c7cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151709311351362173, guid: 71e94d34a9b186e4e86630a1f051c7cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151709311351362174, guid: 71e94d34a9b186e4e86630a1f051c7cc, type: 3}
+      propertyPath: m_Name
+      value: Core
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 71e94d34a9b186e4e86630a1f051c7cc, type: 3}
 --- !u!1001 &1861038089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -512,6 +512,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsList: {fileID: 1221080471}
   selectLevelButtonPrefab: {fileID: 5356026620223224730, guid: a8ae6ea85dd08094e84b2d1475e4ba3a, type: 3}
+  rowLevelsCount: 5
+  colLevelsCount: 3
+  buttonsDistance: {x: 300, y: 150}
+  levelsOffset: {x: 0, y: 200}
 --- !u!1 &2046291734
 GameObject:
   m_ObjectHideFlags: 0
