@@ -53,7 +53,11 @@ namespace Player {
     }
 
     private void StartNextLevel() {
-      CoreAPI.SceneManager.GoToNextLevel();
+      var loaded = CoreAPI.SceneManager.GoToNextLevel();
+
+      if (!loaded) {
+        CoreAPI.SceneManager.LoadMainMenu();
+      }
     }
 
     public void RestartLevel() {

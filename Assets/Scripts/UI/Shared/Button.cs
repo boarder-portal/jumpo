@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI {
+namespace UI.Shared {
   public class Button : MonoBehaviour {
     [SerializeField] private AudioSource clickSound;
 

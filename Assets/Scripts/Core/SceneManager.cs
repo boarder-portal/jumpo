@@ -12,11 +12,13 @@ namespace Core {
     public enum Scene {
       Core,
       MainMenu,
+      LevelsList,
     }
 
     private static readonly Dictionary<Scene, string> SceneString = new() {
       { Scene.Core, "Core" },
       { Scene.MainMenu, "Main Menu" },
+      { Scene.LevelsList, "Levels List" },
     };
 
     private static readonly Regex LevelRegex = new(@"^Level (\d+)$");
@@ -48,19 +50,14 @@ namespace Core {
     }
 
     public static int GetCurrentLevel() {
-      foreach (var scene in Shared.Utilities.Scene.GetAllScenes()) {
-        if (!scene.isLoaded) {
-          continue;
-        }
-
-        var match = LevelRegex.Match(scene.name);
-
-        if (match.Success) {
-          return Convert.ToInt32(match.Groups[1].Value);
-        }
-      }
-
-      return 0;
+      return (
+        from scene in Shared.Utilities.Scene.GetAllScenes()
+        where scene.isLoaded
+        select LevelRegex.Match(scene.name)
+        into match
+        where match.Success
+        select Convert.ToInt32(match.Groups[1].Value)
+      ).FirstOrDefault();
     }
 
     private int _levelsCount;
@@ -103,18 +100,16 @@ namespace Core {
       LoadScene($"Level {level}");
     }
 
-    public void GoToNextLevel() {
+    public bool GoToNextLevel() {
       var currentLevel = GetCurrentLevel();
 
-      if (currentLevel == 0) {
-        return;
+      if (currentLevel == 0 || currentLevel >= _levelsCount) {
+        return false;
       }
 
-      if (currentLevel == _levelsCount) {
-        LoadMainMenu();
-      } else {
-        GoToLevel(currentLevel + 1);
-      }
+      GoToLevel(currentLevel + 1);
+
+      return true;
     }
 
     public void RestartLevel() {
@@ -123,6 +118,10 @@ namespace Core {
       if (currentLevel != 0) {
         GoToLevel(currentLevel);
       }
+    }
+
+    public int GetLevelCount() {
+      return _levelsCount;
     }
   }
 }
