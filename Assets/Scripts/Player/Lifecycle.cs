@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace Player {
   public class Lifecycle : MonoBehaviour {
+    [SerializeField] private LevelManager levelManager;
+
     private Rigidbody2D _rigidbody;
     private AnimationManager _animationManager;
     private AudioManager _audioManager;
 
     private bool _isAlive = true;
-    private bool _levelCompleted;
 
     public bool IsControllable { get; private set; } = true;
 
@@ -39,29 +40,20 @@ namespace Player {
     }
 
     public void EndLevel() {
-      if (_levelCompleted) {
+      if (levelManager.IsCompleted) {
         return;
       }
 
-      _levelCompleted = true;
       IsControllable = false;
 
       _audioManager.Play(Audio.Finish);
       _animationManager.SetState(AnimationState.Idle);
 
-      Invoke(nameof(StartNextLevel), 2f);
-    }
-
-    private void StartNextLevel() {
-      var loaded = CoreAPI.SceneManager.GoToNextLevel();
-
-      if (!loaded) {
-        CoreAPI.SceneManager.LoadMainMenu();
-      }
+      levelManager.CompleteLevel();
     }
 
     public void RestartLevel() {
-      CoreAPI.SceneManager.RestartLevel();
+      levelManager.RestartLevel();
     }
   }
 }

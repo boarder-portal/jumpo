@@ -26,17 +26,6 @@ namespace Core {
       return SceneString[scene];
     }
 
-    public static int GetCurrentLevel() {
-      return (
-        from scene in Shared.Utilities.Scene.GetAllScenes()
-        where scene.isLoaded
-        select LevelRegex.Match(scene.name)
-        into match
-        where match.Success
-        select Convert.ToInt32(match.Groups[1].Value)
-      ).FirstOrDefault();
-    }
-
     private int _levelsCount;
 
     private void Start() {
@@ -71,6 +60,17 @@ namespace Core {
 
     public void LoadMainMenu() {
       LoadScene(Scene.MainMenu);
+    }
+
+    public int GetCurrentLevel() {
+      return (
+        from scene in Shared.Utilities.Scene.GetAllScenes()
+        where scene.isLoaded
+        select LevelRegex.Match(scene.name)
+        into match
+        where match.Success
+        select Convert.ToInt32(match.Groups[1].Value)
+      ).FirstOrDefault();
     }
 
     public void GoToLevel(int level) {

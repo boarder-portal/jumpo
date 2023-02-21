@@ -1,13 +1,13 @@
+using Core;
 using UnityEngine;
 using TMPro;
 
 namespace Player {
   public class AppleCollector : MonoBehaviour {
+    [SerializeField] private LevelManager levelManager;
     [SerializeField] private TextMeshProUGUI counterText;
 
     private AudioManager _audioManager;
-
-    private int _applesCount;
 
     private void Start() {
       _audioManager = GetComponent<AudioManager>();
@@ -19,9 +19,9 @@ namespace Player {
 
         Destroy(collision.gameObject);
 
-        _applesCount++;
+        levelManager.CollectApple();
 
-        counterText.text = $"{_applesCount}";
+        counterText.text = $"{levelManager.ApplesCount}";
       }
     }
   }
