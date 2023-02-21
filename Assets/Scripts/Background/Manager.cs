@@ -5,7 +5,7 @@ namespace Background {
     [SerializeField] private SpriteRenderer leftmostImage;
     [SerializeField] private SpriteRenderer rightmostImage;
     [SerializeField] private new UnityEngine.Camera camera;
-    [SerializeField] private float changeThreshold = 0.1f;
+    [SerializeField] private float changeThreshold = 0.05f;
 
     private float _imageLength;
     private float _cameraWidth;

@@ -1,9 +1,12 @@
+using System;
 using Core;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 namespace Player {
   public class AppleCollector : MonoBehaviour {
+    public static event Action OnCollect;
+
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private TextMeshProUGUI counterText;
 
@@ -19,7 +22,7 @@ namespace Player {
 
         Destroy(collision.gameObject);
 
-        levelManager.CollectApple();
+        OnCollect?.Invoke();
 
         counterText.text = $"{levelManager.ApplesCount}";
       }

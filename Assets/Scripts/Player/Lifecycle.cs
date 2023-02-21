@@ -11,12 +11,20 @@ namespace Player {
 
     private bool _isAlive = true;
 
-    public bool IsControllable { get; private set; } = true;
+    public bool IsControllable => _isAlive && !levelManager.IsCompleted && !levelManager.IsPaused;
 
     private void Start() {
       _rigidbody = GetComponent<Rigidbody2D>();
       _animationManager = GetComponent<AnimationManager>();
       _audioManager = GetComponent<AudioManager>();
+    }
+
+    private void OnEnable() {
+      LevelManager.OnCompleteLevel += EndLevel;
+    }
+
+    private void OnDisable() {
+      LevelManager.OnCompleteLevel -= EndLevel;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -31,7 +39,6 @@ namespace Player {
       }
 
       _isAlive = false;
-      IsControllable = false;
 
       _rigidbody.bodyType = RigidbodyType2D.Static;
 
@@ -39,17 +46,9 @@ namespace Player {
       _animationManager.SetState(AnimationState.Dead);
     }
 
-    public void EndLevel() {
-      if (levelManager.IsCompleted) {
-        return;
-      }
-
-      IsControllable = false;
-
+    private void EndLevel() {
       _audioManager.Play(Audio.Finish);
       _animationManager.SetState(AnimationState.Idle);
-
-      levelManager.CompleteLevel();
     }
 
     public void RestartLevel() {

@@ -4,7 +4,6 @@ using UnityEngine;
 namespace Trampoline {
   public class JumpableTrampoline : MonoBehaviour {
     [SerializeField] private GameObject platform;
-    [SerializeField] private Controller playerController;
     [SerializeField] private float jumpForce = 25f;
 
     private AnimationManager _animationManager;
@@ -15,16 +14,31 @@ namespace Trampoline {
       _audioManager = GetComponent<AudioManager>();
     }
 
-    public void Activate() {
+    public void Activate(GameObject attachedObject) {
+      var playerController = attachedObject.GetComponent<Controller>();
+
+      if (!playerController) {
+        return;
+      }
+
       playerController.StickTo(platform.transform);
+
       _animationManager.SetState(AnimationState.Active);
     }
 
     public void ActivateJump() {
       _audioManager.Play(Audio.Activate);
 
-      playerController.Unstick(platform.transform);
-      playerController.ExternalJump(jumpForce);
+      foreach (Transform child in platform.transform) {
+        var playerController = child.gameObject.GetComponent<Controller>();
+
+        if (!playerController) {
+          continue;
+        }
+
+        playerController.Unstick(platform.transform);
+        playerController.ExternalJump(jumpForce);
+      }
     }
 
     public void ToIdle() {

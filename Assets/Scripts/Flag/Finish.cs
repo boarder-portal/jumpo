@@ -1,12 +1,12 @@
-using Player;
+using Core;
 using UnityEngine;
 
 namespace Flag {
   public class Finish : MonoBehaviour {
-    [SerializeField] private Lifecycle playerLifecycle;
+    [SerializeField] private LevelManager levelManager;
 
     private void OnTriggerEnter2D(Collider2D collision) {
-      playerLifecycle.EndLevel();
+      levelManager.CompleteLevel();
     }
   }
 }

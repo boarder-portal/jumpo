@@ -14,7 +14,7 @@ namespace Trampoline {
         collision.gameObject.CompareTag("Player")
         && Collision.GetCollisionDirection(collision) == Collision.Direction.Up
       ) {
-        _trampoline.Activate();
+        _trampoline.Activate(collision.gameObject);
       }
     }
   }

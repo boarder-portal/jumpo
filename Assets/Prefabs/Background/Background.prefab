@@ -218,7 +218,7 @@ MonoBehaviour:
   leftmostImage: {fileID: 225903878670426865}
   rightmostImage: {fileID: 225903877277680439}
   camera: {fileID: 7108104994575938719, guid: 2a5388a6f9a958d4eb29be488230324e, type: 3}
-  changeThreshold: 0.1
+  changeThreshold: 0.05
 --- !u!1 &225903878670426871
 GameObject:
   m_ObjectHideFlags: 0

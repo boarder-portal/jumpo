@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3939162579499422911, guid: 9b6d38f3c61abb041816e2d5f2480b7b, type: 3}
       propertyPath: m_Name
-      value: Core Panel
+      value: Root Panel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6d38f3c61abb041816e2d5f2480b7b, type: 3}
