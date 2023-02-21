@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace Shared.Utilities {
   [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
-  public class DataPath : Attribute {
+  public class DataPathAttribute : Attribute {
     public readonly string Path;
 
-    public DataPath(string path) {
+    public DataPathAttribute(string path) {
       Path = path;
     }
   }
@@ -20,7 +20,7 @@ namespace Shared.Utilities {
       var path = "";
 
       foreach (var attribute in attrs) {
-        if (attribute is DataPath pathAttribute) {
+        if (attribute is DataPathAttribute pathAttribute) {
           path = pathAttribute.Path;
 
           break;

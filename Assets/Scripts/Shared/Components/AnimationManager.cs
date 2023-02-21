@@ -11,6 +11,17 @@ namespace Shared.Components {
     protected abstract TAnimation DefaultState { get; }
 
     private void Start() {
+      if (!typeof(TAnimation).IsEnum) {
+        throw new Exception("Wrong TAnimation");
+      }
+
+      var expectedAnimationsCount = Enum.GetNames(typeof(TAnimation)).Length;
+      var actualAnimationsCount = animations.Length;
+
+      if (expectedAnimationsCount != actualAnimationsCount) {
+        throw new Exception($"Wrong number of animations (expected {expectedAnimationsCount}, got {actualAnimationsCount})");
+      }
+
       _animator = GetComponent<Animator>();
       _stateValue = DefaultState;
     }
@@ -20,12 +31,6 @@ namespace Shared.Components {
     }
 
     public void SetState(TAnimation state) {
-      if (!typeof(TAnimation).IsEnum) {
-        Debug.LogWarning("Passed wrong argument to SetState()");
-
-        return;
-      }
-
       var newStateValue = (int)(object)state;
 
       if (newStateValue == (int)(object)_stateValue) {
