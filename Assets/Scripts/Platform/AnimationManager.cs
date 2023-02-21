@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 namespace Platform {
+  [RequireComponent(typeof(Animator))]
   public class AnimationManager : MonoBehaviour {
     private static readonly int AnimationMultiplier = Animator.StringToHash("animationMultiplier");
 

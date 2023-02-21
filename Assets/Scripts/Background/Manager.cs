@@ -4,8 +4,9 @@ namespace Background {
   public class Manager : MonoBehaviour {
     [SerializeField] private SpriteRenderer leftmostImage;
     [SerializeField] private SpriteRenderer rightmostImage;
+    [SerializeField] private GameObject sprites;
     [SerializeField] private new UnityEngine.Camera camera;
-    [SerializeField] private float changeThreshold = 0.05f;
+    [SerializeField] private float changeThreshold = 0.1f;
 
     private float _imageLength;
     private float _cameraWidth;
@@ -33,9 +34,9 @@ namespace Background {
       }
 
       if (positionChangeX != 0) {
-        var position = transform.position;
+        var position = sprites.transform.position;
 
-        transform.position = new Vector3(position.x + positionChangeX, position.y, position.z);
+        sprites.transform.position = new Vector3(position.x + positionChangeX, position.y, position.z);
       }
     }
   }

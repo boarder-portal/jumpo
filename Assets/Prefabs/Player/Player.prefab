@@ -209,6 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f961651cb5795264f94488d6cc561386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 716877200958292745}
+  levelManager: {fileID: 0}
   counterText: {fileID: 0}
 --- !u!114 &-9132449737948883898
 MonoBehaviour:
@@ -222,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2547eac27176034baf02addc09d18ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
 --- !u!114 &716877200958292745
 MonoBehaviour:
   m_ObjectHideFlags: 0

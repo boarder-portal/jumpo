@@ -1,11 +1,10 @@
+using Core;
 using UnityEngine;
 
 namespace UI.Shared {
   public class Button : MonoBehaviour {
-    [SerializeField] private AudioSource clickSound;
-
     public void OnClick() {
-      clickSound.Play();
+      CoreAPI.UIAudioManager.Play(Audio.ButtonClick);
     }
   }
 }
