@@ -9,7 +9,7 @@ namespace Platform {
     private Animator _animator;
     private Vector2 _prevPosition;
 
-    private void Start() {
+    private void Awake() {
       _animator = GetComponent<Animator>();
       _prevPosition = transform.position;
     }

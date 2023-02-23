@@ -28,7 +28,7 @@ namespace Player {
     private AudioManager _audioManager;
     private Transform _playerParent;
 
-    private void Start() {
+    private void Awake() {
       _rigidbody = GetComponent<Rigidbody2D>();
       _animationManager = GetComponent<AnimationManager>();
       _sprite = GetComponent<SpriteRenderer>();

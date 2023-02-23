@@ -137,7 +137,7 @@ TextureImporter:
         width: 600
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 100, y: 0, z: 100, w: 0}
       outline: []
       physicsShape: []
@@ -145,6 +145,27 @@ TextureImporter:
       bones: []
       spriteID: d43f1c67ae21ece478548a7d58604668
       internalID: 415597733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panel
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 1750
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0281653d8fb94b4296c60e1c67c9d97
+      internalID: 281861124
       vertices: []
       indices: 
       edges: []
@@ -161,6 +182,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Button: 415597733
+      Panel: 281861124
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 1

@@ -10,7 +10,7 @@ namespace Shared.Components {
 
     protected abstract TAnimation DefaultState { get; }
 
-    private void Start() {
+    private void Awake() {
       if (!typeof(TAnimation).IsEnum) {
         throw new Exception("Wrong TAnimation");
       }

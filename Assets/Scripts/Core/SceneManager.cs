@@ -62,6 +62,10 @@ namespace Core {
       LoadScene(Scene.MainMenu);
     }
 
+    public void Quit() {
+      Application.Quit();
+    }
+
     public int GetCurrentLevel() {
       return (
         from scene in Shared.Utilities.Scene.GetAllScenes()

@@ -5,7 +5,7 @@ namespace Music {
   public class BackgroundMusicManager : MonoBehaviour {
     private AudioSource _backgroundMusic;
 
-    private void Start() {
+    private void Awake() {
       _backgroundMusic = GetComponent<AudioSource>();
     }
 

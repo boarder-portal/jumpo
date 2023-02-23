@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Player {
   public class Lifecycle : MonoBehaviour {
-    [SerializeField] private LevelManager levelManager;
     [SerializeField] private float colliderOverlapThreshold = 0.3f;
 
     private Rigidbody2D _rigidbody;
@@ -12,9 +11,9 @@ namespace Player {
 
     private bool _isAlive = true;
 
-    public bool IsControllable => _isAlive && !levelManager.IsCompleted && !levelManager.IsPaused;
+    public bool IsControllable => _isAlive && !LevelManager.Current.IsCompleted && !LevelManager.Current.IsPaused;
 
-    private void Start() {
+    private void Awake() {
       _rigidbody = GetComponent<Rigidbody2D>();
       _animationManager = GetComponent<AnimationManager>();
       _audioManager = GetComponent<AudioManager>();
@@ -65,7 +64,7 @@ namespace Player {
     }
 
     public void RestartLevel() {
-      levelManager.RestartLevel();
+      LevelManager.Current.RestartLevel();
     }
   }
 }

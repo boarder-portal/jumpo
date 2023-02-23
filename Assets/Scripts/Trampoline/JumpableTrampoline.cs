@@ -9,7 +9,7 @@ namespace Trampoline {
     private AnimationManager _animationManager;
     private AudioManager _audioManager;
 
-    private void Start() {
+    private void Awake() {
       _animationManager = GetComponent<AnimationManager>();
       _audioManager = GetComponent<AudioManager>();
     }

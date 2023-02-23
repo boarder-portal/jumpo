@@ -3051,7 +3051,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2865171084632722027, guid: 35beaf41e3d96fa458e4617b4b5dad55, type: 3}
       propertyPath: m_Name
-      value: Main Camera
+      value: Main Level Camera
       objectReference: {fileID: 0}
     - target: {fileID: 2865171084632722071, guid: 35beaf41e3d96fa458e4617b4b5dad55, type: 3}
       propertyPath: m_RootOrder

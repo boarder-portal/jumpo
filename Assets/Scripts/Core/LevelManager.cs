@@ -1,32 +1,43 @@
 ﻿using System;
 using Player;
 using UnityEngine;
+using AppleLifecycle = Apple.Lifecycle;
+using LevelUIManager = UI.Level.Manager;
 
 namespace Core {
   public class LevelManager : MonoBehaviour {
+    public static LevelManager Current;
+
     public static event Action<bool> OnPauseStateChanged;
     public static event Action OnCompleteLevel;
 
-    [SerializeField] private GameObject applesContainer;
-
     private float _startTimestamp;
     private int _allApplesCount;
+    private int _collectedApplesCount;
 
-    public int ApplesCount { get; private set; }
     public bool IsCompleted { get; private set; }
     public bool IsPaused { get; private set; }
 
+    private void Awake() {
+      Current = this;
+    }
+
     private void Start() {
       _startTimestamp = Time.time;
-      _allApplesCount = applesContainer.transform.childCount;
     }
 
     private void OnEnable() {
-      AppleCollector.OnCollect += CollectApple;
+      AppleLifecycle.OnSpawn += OnCreateApple;
+      AppleCollector.OnCollect += OnCollectApple;
     }
 
     private void OnDisable() {
-      AppleCollector.OnCollect -= CollectApple;
+      AppleLifecycle.OnSpawn -= OnCreateApple;
+      AppleCollector.OnCollect -= OnCollectApple;
+    }
+
+    private void OnDestroy() {
+      Current = null;
     }
 
     private void Update() {
@@ -39,8 +50,12 @@ namespace Core {
       }
     }
 
-    private void CollectApple() {
-      ApplesCount++;
+    private void OnCreateApple() {
+      _allApplesCount++;
+    }
+
+    private void OnCollectApple(int applesCount) {
+      _collectedApplesCount = applesCount;
     }
 
     public void CompleteLevel() {
@@ -50,7 +65,7 @@ namespace Core {
 
       IsCompleted = true;
 
-      if (ApplesCount == _allApplesCount) {
+      if (_collectedApplesCount == _allApplesCount) {
         var currentLevel = CoreAPI.SceneManager.GetCurrentLevel();
         var score = Time.time - _startTimestamp;
 
@@ -66,7 +81,7 @@ namespace Core {
       CoreAPI.SceneManager.RestartLevel();
     }
 
-    private void SetPauseState(bool paused) {
+    public void SetPauseState(bool paused) {
       IsPaused = paused;
       Time.timeScale = paused ? 0 : 1;
 

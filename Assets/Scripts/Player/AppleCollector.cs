@@ -1,30 +1,28 @@
 using System;
-using Core;
-using TMPro;
 using UnityEngine;
+using LevelUIManager = UI.Level.Manager;
 
 namespace Player {
   public class AppleCollector : MonoBehaviour {
-    public static event Action OnCollect;
-
-    [SerializeField] private LevelManager levelManager;
-    [SerializeField] private TextMeshProUGUI counterText;
+    public static event Action<int> OnCollect;
 
     private AudioManager _audioManager;
 
-    private void Start() {
+    private int _collectedApplesCount;
+
+    private void Awake() {
       _audioManager = GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
       if (collision.gameObject.CompareTag("Apple")) {
+        _collectedApplesCount++;
+
         _audioManager.Play(Audio.Collect);
 
         Destroy(collision.gameObject);
 
-        OnCollect?.Invoke();
-
-        counterText.text = $"{levelManager.ApplesCount}";
+        OnCollect?.Invoke(_collectedApplesCount);
       }
     }
   }

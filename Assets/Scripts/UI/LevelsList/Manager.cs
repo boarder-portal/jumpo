@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.LevelsList {
-  public class LevelsListManager : MonoBehaviour {
+  public class Manager : MonoBehaviour {
     [SerializeField] private GameObject levelsList;
     [SerializeField] private GameObject selectLevelButtonPrefab;
     [SerializeField] private int rowLevelsCount = 5;
