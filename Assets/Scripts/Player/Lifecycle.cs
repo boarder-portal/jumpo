@@ -34,7 +34,7 @@ namespace Player {
     }
 
     private void OnCollisionStay2D(Collision2D collision) {
-      if (!_isAlive) {
+      if (!_isAlive || collision.gameObject.CompareTag("Trampoline Platform")) {
         return;
       }
 

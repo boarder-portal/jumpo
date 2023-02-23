@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3523752218151700620}
   m_Layer: 9
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Trampoline Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,7 +395,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 8923932769941205408}
-  playerController: {fileID: -6909820067934830902, guid: 49d3fce988b90da4e87b8fc22405da63, type: 3}
   jumpForce: 25
 --- !u!114 &9155112068838543538
 MonoBehaviour:

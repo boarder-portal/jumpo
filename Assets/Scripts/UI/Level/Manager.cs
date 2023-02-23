@@ -36,12 +36,10 @@ namespace UI.Level {
     }
 
     public void GoToMainMenu() {
-      Unpause();
       CoreAPI.SceneManager.LoadMainMenu();
     }
 
     public void QuitGame() {
-      Unpause();
       CoreAPI.SceneManager.Quit();
     }
   }

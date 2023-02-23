@@ -38,6 +38,8 @@ namespace Core {
 
     private void OnDestroy() {
       Current = null;
+
+      SetPauseState(false);
     }
 
     private void Update() {
