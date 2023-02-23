@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Player {
   public class Lifecycle : MonoBehaviour {
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private float colliderOverlapThreshold = 0.3f;
 
     private Rigidbody2D _rigidbody;
     private AnimationManager _animationManager;
@@ -30,6 +31,18 @@ namespace Player {
     private void OnTriggerEnter2D(Collider2D collision) {
       if (_isAlive && collision.gameObject.CompareTag("Spikes")) {
         Die();
+      }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision) {
+      if (!_isAlive) {
+        return;
+      }
+
+      foreach (var contact in collision.contacts) {
+        if (contact.separation < -colliderOverlapThreshold) {
+          Die();
+        }
       }
     }
 
