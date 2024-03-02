@@ -35,6 +35,10 @@ namespace UI.Level {
       LevelManager.Current.SetPauseState(false);
     }
 
+    public void RestartLevel() {
+      CoreAPI.SceneManager.RestartLevel();
+    }
+
     public void GoToMainMenu() {
       CoreAPI.SceneManager.LoadMainMenu();
     }

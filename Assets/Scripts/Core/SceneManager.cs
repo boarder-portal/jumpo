@@ -63,7 +63,11 @@ namespace Core {
     }
 
     public void Quit() {
+#if UNITY_EDITOR
+      UnityEditor.EditorApplication.ExitPlaymode();
+#else
       Application.Quit();
+#endif
     }
 
     public int GetCurrentLevel() {
