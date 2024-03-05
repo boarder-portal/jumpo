@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3598201870329865005}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -140,12 +139,9 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8852005563049858945, guid: 61e9f0ce225bb26458f7c260c5877341, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8852005563049858945, guid: 61e9f0ce225bb26458f7c260c5877341, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -171,6 +167,12 @@ PrefabInstance:
       value: Button With Text
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8852005563049858945, guid: 61e9f0ce225bb26458f7c260c5877341, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 44859837}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61e9f0ce225bb26458f7c260c5877341, type: 3}
 --- !u!224 &3598201870329865005 stripped
 RectTransform:
