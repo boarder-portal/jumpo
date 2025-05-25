@@ -8,10 +8,17 @@ namespace Trampoline {
 
     private AnimationManager _animationManager;
     private AudioManager _audioManager;
+    private bool _isScheduledToBounce;
 
     private void Awake() {
       _animationManager = GetComponent<AnimationManager>();
       _audioManager = GetComponent<AudioManager>();
+    }
+
+    private void LateUpdate() {
+      if (_isScheduledToBounce) {
+        ActivateBounce();
+      }
     }
 
     public void Activate(GameObject attachedObject) {
@@ -26,7 +33,13 @@ namespace Trampoline {
       _animationManager.SetState(AnimationState.Active);
     }
 
-    public void ActivateJump() {
+    public void ScheduleToBounce() {
+      _isScheduledToBounce = true;
+    }
+
+    private void ActivateBounce() {
+      _isScheduledToBounce = false;
+
       _audioManager.Play(Audio.Activate);
 
       foreach (Transform child in platform.transform) {
