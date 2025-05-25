@@ -50,7 +50,7 @@ namespace Player {
       var newAnimationState = AnimationState.Idle;
       var newVelocity = GetNewVelocity();
 
-      _rigidbody.velocity = newVelocity;
+      _rigidbody.linearVelocity = newVelocity;
 
       if (newVelocity.x != 0) {
         newAnimationState = AnimationState.Run;
@@ -66,7 +66,7 @@ namespace Player {
     }
 
     private Vector2 GetNewVelocity() {
-      var currentVelocity = _rigidbody.velocity;
+      var currentVelocity = _rigidbody.linearVelocity;
       var newVelocityX = 0f;
       var newVelocityY = currentVelocity.y;
 
@@ -108,7 +108,7 @@ namespace Player {
     }
 
     public void ExternalJump(float externalJumpForce) {
-      _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, externalJumpForce);
+      _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, externalJumpForce);
     }
 
     public void StickTo(Transform t) {
